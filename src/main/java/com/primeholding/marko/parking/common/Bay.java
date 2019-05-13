@@ -29,8 +29,7 @@ public abstract class Bay {
 	}
 
 	public void setCar(Car car) {
-		if (canPark(car.getCarType().getType()))
-			this.car = car;
+		this.car = car;
 	}
 
 	/**

@@ -12,6 +12,8 @@ import com.primeholding.marko.parking.util.ListUtils;
 
 public class SimpleParkingBuilder implements ParkingBuilder {
 
+	private final int DEFAULT_SIZE = 5;
+	
 	private BayFactory bayFactory;
 	
 	private CarFactory carFactory;
@@ -24,6 +26,7 @@ public class SimpleParkingBuilder implements ParkingBuilder {
 		this.bayFactory = bayFactory;
 		this.carFactory = carFactory;
 		this.bays = new ArrayList<>();
+		this.size = DEFAULT_SIZE;
 	}
 	
 	public CarFactory getCarFactory() {
@@ -43,38 +46,30 @@ public class SimpleParkingBuilder implements ParkingBuilder {
 		this.size = size;
 		bays = new ArrayList<>();
 		for (int i = 0; i < size * size; i++) {
-			bays.add(bayFactory.createBayForNonDisabled());
+			bays.add(bayFactory.createBayForNonDisabled(i));
 		}
 		return this;
 	}
 
 	@Override
 	public ParkingBuilder withPedestrianExit(int pedestrianExitIndex) {
-		if (!checkIfParkingIndexIsValid(pedestrianExitIndex))
+		if (!ListUtils.checkIfIndexIsValid(bays, pedestrianExitIndex))
 			return this;
-		bays.set(pedestrianExitIndex, bayFactory.createPedestrianExitBay());
+		bays.set(pedestrianExitIndex, bayFactory.createPedestrianExitBay(pedestrianExitIndex));
 		return this;
 	}
 
 	@Override
 	public ParkingBuilder withDisabledBay(int disabledBayIndex) {
-		if (!checkIfParkingIndexIsValid(disabledBayIndex))
+		if (!ListUtils.checkIfIndexIsValid(bays, disabledBayIndex))
 			return this;
-		bays.set(disabledBayIndex, bayFactory.createBayForDisabled());
+		bays.set(disabledBayIndex, bayFactory.createBayForDisabled(disabledBayIndex));
 		return this;
 	}
 
 	@Override
 	public Parking build() {
 		return new SimpleParking(this);
-	}
-
-	private boolean checkIfParkingIndexIsValid(int index) {
-		if (!ListUtils.checkIfIndexIsValid(bays, index))
-			return false;
-		if (!bays.get(index).isFree())
-			return false;
-		return true;
 	}
 
 }

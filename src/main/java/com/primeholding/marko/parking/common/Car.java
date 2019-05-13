@@ -12,4 +12,10 @@ public class Car {
 		return carType;
 	}
 	
+	@Override
+	public String toString() {
+		return new StringBuilder()
+				.append(carType.getType())
+				.toString();
+	}
 }

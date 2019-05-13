@@ -5,8 +5,8 @@ import com.primeholding.marko.parking.common.CarType;
 
 public class BayForNonDisabled extends Bay {
 
-	public BayForNonDisabled(BayType type) {
-		super(type);
+	public BayForNonDisabled(BayType type, int index) {
+		super(type, index);
 	}
 
 	@Override

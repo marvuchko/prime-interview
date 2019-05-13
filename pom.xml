@@ -13,7 +13,7 @@
 	</properties>
 
 	<dependencies>
-		<!-- Inversion of control component of a Spring only - Spring Context -->
+		<!-- Inversion of Control -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>

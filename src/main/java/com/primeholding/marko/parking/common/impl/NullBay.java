@@ -12,8 +12,8 @@ import com.primeholding.marko.parking.common.Bay;
  */
 public class NullBay extends Bay {
 
-	public NullBay(BayType type) {
-		super(type);
+	public NullBay(BayType type, int index) {
+		super(type, index);
 	}
 
 	@Override

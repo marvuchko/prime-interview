@@ -4,6 +4,11 @@ import com.primeholding.marko.parking.common.Car;
 import com.primeholding.marko.parking.common.CarFactory;
 import com.primeholding.marko.parking.common.CarType;
 
+/**
+ * A factory method implementation of a {@linkplain CarFactory}.
+ * 
+ * @author Marko Vuckovic
+ */
 public class SimpleCarFactoryMethod implements CarFactory {
 
 	@Override

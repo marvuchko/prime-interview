@@ -8,26 +8,31 @@ import com.primeholding.marko.parking.common.impl.BayType;
 import com.primeholding.marko.parking.common.impl.NullBay;
 import com.primeholding.marko.parking.common.impl.PedestrianExitBay;
 
+/**
+ * A simple implementation of a {@linkplain BayFactory}.
+ * 
+ * @author Marko Vuckovic
+ */
 public class SimpleBayFactory implements BayFactory {
 
 	@Override
-	public Bay createNullBay() {
-		return new NullBay(BayType.NULL_BAY);
+	public Bay createNullBay(int index) {
+		return new NullBay(BayType.NULL_BAY, index);
 	}
 
 	@Override
-	public Bay createPedestrianExitBay() {
-		return new PedestrianExitBay(BayType.PEDESTRIAN_EXIT);
+	public Bay createPedestrianExitBay(int index) {
+		return new PedestrianExitBay(BayType.PEDESTRIAN_EXIT, index);
 	}
 
 	@Override
-	public Bay createBayForDisabled() {
-		return new BayForDisabled(BayType.EMPTY_BAY_FOR_DISABLED);
+	public Bay createBayForDisabled(int index) {
+		return new BayForDisabled(BayType.EMPTY_BAY_FOR_DISABLED, index);
 	}
 
 	@Override
-	public Bay createBayForNonDisabled() {
-		return new BayForNonDisabled(BayType.EMPTY_BAY_FOR_NON_DISABLED);
+	public Bay createBayForNonDisabled(int index) {
+		return new BayForNonDisabled(BayType.EMPTY_BAY_FOR_NON_DISABLED, index);
 	}
 
 }

@@ -24,6 +24,8 @@ public class Application {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext(ApplicationConstants.APPLICATION_CONTEXT_FILE);
 		
+		logger.info("\n\nApplication started!\n\n");
+		
 		logger.info("\n" + AsciiArtUtil.INIT_MESSAGE);
 	
 		ParkingBuilder parkingBuilder = (ParkingBuilder) context.getBean(BeanConstants.PARKING_BUILDER_BEAN);
